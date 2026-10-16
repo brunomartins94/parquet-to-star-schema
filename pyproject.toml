@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parquet-to-star-schema"
+version = "0.1.0"
+description = "Build a dimensional brewery analytics model from S3 Parquet"
+requires-python = ">=3.11"
+dependencies = [
+  "boto3>=1.35,<2.0",
+  "duckdb>=1.1,<2.0",
+  "pyarrow>=17,<20",
+  "python-dotenv>=1.0,<2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
