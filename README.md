@@ -37,6 +37,24 @@ dim_brewery ─ fact_brewery_snapshot ─ dim_brewery_type
 - Reexecução idempotente por data e tabela.
 - Desenvolvimento e testes em Docker.
 
+## 📊 Resultado da execução de referência
+
+O modelo foi construído a partir de **100 registros** da camada Parquet e consultado no DuckDB por país e tipo de cervejaria.
+
+| Evidência | Resultado |
+| --- | --- |
+| Registros na fato de snapshot | **100** |
+| Tabelas Parquet do modelo | **5** |
+| Cervejarias `micro` | **58** |
+| Cervejarias `brewpub` | **26** |
+| Cervejarias classificadas como `closed` | **4** |
+
+A consulta também evidenciou cobertura em Estados Unidos, Bélgica, Alemanha, Austrália, Canadá, Irlanda, Portugal, África do Sul e Suécia. Isso demonstra que a fato pode ser cruzada com dimensões para responder perguntas sobre categoria, localidade e status da entidade.
+
+| Validação automatizada | Resultado |
+| --- | --- |
+| Testes no Docker | **3 aprovados** |
+
 ## 💼 Aplicabilidade
 
 | Caminho comum | Problema | Modelo estrela |
@@ -96,4 +114,5 @@ Na segunda execução da pipeline, as cinco tabelas Parquet já existentes são 
 ## 🔗 Continuidade do laboratório
 
 - [Projeto anterior: S3 Raw JSON to Parquet](https://github.com/brunomartins94/s3-raw-to-parquet)
-- Os rascunhos de LinkedIn e blog deste projeto ficarão em `../roadmap/parquet-to-star-schema/` ao final.
+- [Nota técnica: do Parquet ao modelo estrela](https://brunomartins94.github.io/notas/parquet-para-modelo-estrela/)
+- Os rascunhos de LinkedIn e blog ficam em `../roadmap/parquet-to-star-schema/`.
